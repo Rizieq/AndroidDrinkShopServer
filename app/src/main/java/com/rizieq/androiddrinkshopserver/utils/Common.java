@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 
 public class Common {
 
-    public static final String BASE_URL = "http://192.168.0.113/drinkshop/";
+    public static final String BASE_URL = "http://192.168.0.111/drinkshop/";
     public static IDrinkshopAPI getAPI()
     {
         return RetrofitClient.getClient(BASE_URL).create(IDrinkshopAPI.class);
