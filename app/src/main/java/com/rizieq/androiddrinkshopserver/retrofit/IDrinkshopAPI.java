@@ -1,6 +1,7 @@
 package com.rizieq.androiddrinkshopserver.retrofit;
 
 import com.rizieq.androiddrinkshopserver.model.Category;
+import com.rizieq.androiddrinkshopserver.model.Drink;
 
 import java.util.List;
 
@@ -38,4 +39,8 @@ public interface IDrinkshopAPI {
     @FormUrlEncoded
     @POST("server/category/delete_category.php")
     Observable<String> deleteCategory(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("getdrink.php")
+    Observable<List<Drink>> getDrink(@Field("menuid") String menuID);
 }

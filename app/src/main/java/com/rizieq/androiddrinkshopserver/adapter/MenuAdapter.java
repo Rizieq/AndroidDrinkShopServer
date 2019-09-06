@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rizieq.androiddrinkshopserver.DrinkListActivity;
 import com.rizieq.androiddrinkshopserver.Interface.IItemClickListener;
 import com.rizieq.androiddrinkshopserver.R;
 import com.rizieq.androiddrinkshopserver.UpdateCategoryActivity;
@@ -46,12 +47,25 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
         // Implement item Click
         menuViewHolder.setItemClickListener(new IItemClickListener() {
+
             @Override
-            public void onClick(View view) {
-                // Assign this category to variable global
-                Common.currentCategory = categoryList.get(i);
-                // Start Activity
-                context.startActivity(new Intent(context, UpdateCategoryActivity.class));
+            public void onClick(View view, boolean isLongClick) {
+
+                if (isLongClick)
+                {
+                    // Assign this category to variable global
+                    Common.currentCategory = categoryList.get(i);
+                    // Start Activity
+                    context.startActivity(new Intent(context, UpdateCategoryActivity.class));
+
+                }
+                else
+                {
+                    // Assign this category to variable global
+                    Common.currentCategory = categoryList.get(i);
+                    // Start Activity
+                    context.startActivity(new Intent(context, DrinkListActivity.class));
+                }
             }
         });
     }

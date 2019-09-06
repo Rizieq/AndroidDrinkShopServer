@@ -9,10 +9,11 @@ import android.widget.TextView;
 import com.rizieq.androiddrinkshopserver.Interface.IItemClickListener;
 import com.rizieq.androiddrinkshopserver.R;
 
-public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
+public class DrinkListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
 
     public ImageView img_product;
-    public TextView txt_product;
+    public TextView txt_drink_name, txt_price;
 
     IItemClickListener itemClickListener;
 
@@ -20,25 +21,20 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         this.itemClickListener = itemClickListener;
     }
 
-    public MenuViewHolder(@NonNull View itemView) {
+    public DrinkListViewHolder(@NonNull View itemView) {
         super(itemView);
 
         img_product = itemView.findViewById(R.id.img_product);
-        txt_product = itemView.findViewById(R.id.txt_menu_name);
+        txt_drink_name = itemView.findViewById(R.id.txt_drink_name);
+        txt_price = itemView.findViewById(R.id.txt_price);
 
         itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
         itemClickListener.onClick(v,false);
-    }
 
-    @Override
-    public boolean onLongClick(View v) {
-        itemClickListener.onClick(v,true);
-        return true;
     }
 }
