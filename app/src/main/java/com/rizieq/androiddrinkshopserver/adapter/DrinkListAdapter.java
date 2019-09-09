@@ -1,6 +1,7 @@
 package com.rizieq.androiddrinkshopserver.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,8 +10,10 @@ import android.view.ViewGroup;
 
 import com.rizieq.androiddrinkshopserver.Interface.IItemClickListener;
 import com.rizieq.androiddrinkshopserver.R;
+import com.rizieq.androiddrinkshopserver.UpdateProductActivity;
 import com.rizieq.androiddrinkshopserver.adapter.viewHolder.DrinkListViewHolder;
 import com.rizieq.androiddrinkshopserver.model.Drink;
+import com.rizieq.androiddrinkshopserver.utils.Common;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -29,13 +32,13 @@ public class DrinkListAdapter extends RecyclerView.Adapter<DrinkListViewHolder> 
     @NonNull
     @Override
     public DrinkListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.drink_item_layout,viewGroup,false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.drink_item_layout, viewGroup, false);
 
         return new DrinkListViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DrinkListViewHolder drinkListViewHolder, int i) {
+    public void onBindViewHolder(@NonNull DrinkListViewHolder drinkListViewHolder, final int i) {
 
         Picasso.with(context).load(drinkList.get(i).Link).into(drinkListViewHolder.img_product);
         drinkListViewHolder.txt_price.setText(new StringBuilder("$").append(drinkList.get(i).Price).toString());
@@ -45,7 +48,8 @@ public class DrinkListAdapter extends RecyclerView.Adapter<DrinkListViewHolder> 
         drinkListViewHolder.setItemClickListener(new IItemClickListener() {
             @Override
             public void onClick(View view, boolean isLongClick) {
-                // Implement late
+                Common.currentDrink = drinkList.get(i);
+                context.startActivity(new Intent(context, UpdateProductActivity.class));
             }
         });
     }
