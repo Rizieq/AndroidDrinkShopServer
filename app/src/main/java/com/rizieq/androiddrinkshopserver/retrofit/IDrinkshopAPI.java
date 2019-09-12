@@ -2,6 +2,7 @@ package com.rizieq.androiddrinkshopserver.retrofit;
 
 import com.rizieq.androiddrinkshopserver.model.Category;
 import com.rizieq.androiddrinkshopserver.model.Drink;
+import com.rizieq.androiddrinkshopserver.model.Order;
 
 import java.util.List;
 
@@ -74,4 +75,13 @@ public interface IDrinkshopAPI {
     @FormUrlEncoded
     @POST("server/product/delete_product.php")
     Observable<String> deleteProduct(@Field("id") String id);
+
+
+    /*
+     * ORDER MANAGEMENT
+     */
+
+    @FormUrlEncoded
+    @POST("server/order/getorder.php")
+    Observable<List<Order>> getAllOrder(@Field("status") String status);
 }

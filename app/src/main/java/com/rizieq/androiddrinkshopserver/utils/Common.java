@@ -18,10 +18,27 @@ public class Common {
     public static List<Category> menuList = new ArrayList<>();
 
 
-    public static final String BASE_URL = "http://192.168.0.111/drinkshop/";
-    public static IDrinkshopAPI getAPI()
-    {
+    public static final String BASE_URL = "http://192.168.1.5/drinkshop/";
+
+    public static IDrinkshopAPI getAPI() {
         return RetrofitClient.getClient(BASE_URL).create(IDrinkshopAPI.class);
     }
 
+    public static String convertCodeToStatus(int orderStatus) {
+        switch (orderStatus) {
+            case 0:
+                return "Placed";
+            case 1:
+                return "Processing";
+            case 2:
+                return "Shipping";
+            case 3:
+                return "Shipped";
+            case -1:
+                return "Cancelled";
+            default:
+                return "Order Error";
+
+        }
+    }
 }
