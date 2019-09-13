@@ -31,6 +31,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ipaulpro.afilechooser.utils.FileUtils;
 import com.rizieq.androiddrinkshopserver.adapter.MenuAdapter;
 import com.rizieq.androiddrinkshopserver.model.Category;
@@ -124,9 +125,26 @@ public class MainActivity extends AppCompatActivity
 
 
         // GetMenu
-
         getMenu();
 
+        //UPDATE TOKEN
+        updateTokenFirebase();
+
+    }
+
+    private void updateTokenFirebase() {
+        mService.updateToken("server_app_01", FirebaseInstanceId.getInstance().getToken(),"1")
+                .enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Log.d("DEBUG",response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Log.d("DEBUG",t.getMessage());
+                    }
+                });
     }
 
     private void showAddCategoryDialog() {

@@ -84,4 +84,14 @@ public interface IDrinkshopAPI {
     @FormUrlEncoded
     @POST("server/order/getorder.php")
     Observable<List<Order>> getAllOrder(@Field("status") String status);
+
+    /*
+     * TOKEN UPDATE
+     */
+
+    @FormUrlEncoded
+    @POST("updatetoken.php")
+    Call<String> updateToken(@Field("phone") String phone,
+                             @Field("token") String token,
+                             @Field("isServerToken") String isServerApp);
 }
