@@ -2,6 +2,7 @@ package com.rizieq.androiddrinkshopserver.utils;
 
 import com.rizieq.androiddrinkshopserver.model.Category;
 import com.rizieq.androiddrinkshopserver.model.Drink;
+import com.rizieq.androiddrinkshopserver.model.Order;
 import com.rizieq.androiddrinkshopserver.retrofit.IDrinkshopAPI;
 import com.rizieq.androiddrinkshopserver.retrofit.RetrofitClient;
 
@@ -14,11 +15,12 @@ public class Common {
 
     public static Category currentCategory;
     public static Drink currentDrink;
+    public static Order currentOrder;
 
     public static List<Category> menuList = new ArrayList<>();
 
 
-    public static final String BASE_URL = "http://192.168.1.5/drinkshop/";
+    public static final String BASE_URL = "http://192.168.1.3/drinkshop/";
 
     public static IDrinkshopAPI getAPI() {
         return RetrofitClient.getClient(BASE_URL).create(IDrinkshopAPI.class);

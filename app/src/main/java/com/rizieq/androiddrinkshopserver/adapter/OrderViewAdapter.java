@@ -1,6 +1,7 @@
 package com.rizieq.androiddrinkshopserver.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.rizieq.androiddrinkshopserver.Interface.IItemClickListener;
 import com.rizieq.androiddrinkshopserver.R;
+import com.rizieq.androiddrinkshopserver.ViewOrderDetail;
 import com.rizieq.androiddrinkshopserver.adapter.viewHolder.OrderViewHolder;
 import com.rizieq.androiddrinkshopserver.model.Order;
 import com.rizieq.androiddrinkshopserver.utils.Common;
@@ -35,7 +37,7 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OrderViewHolder orderViewHolder, int i) {
+    public void onBindViewHolder(@NonNull OrderViewHolder orderViewHolder, final int i) {
 
         orderViewHolder.txt_order_id.setText(new StringBuilder("#").append(orderList.get(i).getOrderId())
                 .toString());
@@ -47,6 +49,9 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewHolder> {
             @Override
             public void onClick(View view, boolean isLongClick) {
 
+                Common.currentOrder = orderList.get(i);
+
+                context.startActivity(new Intent(context, ViewOrderDetail.class));
             }
         });
 
