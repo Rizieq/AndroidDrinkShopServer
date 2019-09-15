@@ -5,7 +5,7 @@ public class Order {
     private long OrderId;
     private int OrderStatus;
     private float OrderPrice;
-    private String OrderDetail,OrderComment,OrderAddress,OrderPhone;
+    private String OrderDetail,OrderComment,OrderAddress,UserPhone;
 
     public Order() {
 
@@ -60,10 +60,10 @@ public class Order {
     }
 
     public String getOrderPhone() {
-        return OrderPhone;
+        return UserPhone;
     }
 
-    public void setOrderPhone(String orderPhone) {
-        OrderPhone = orderPhone;
+    public void setOrderPhone(String userPhone) {
+        UserPhone = userPhone;
     }
 }

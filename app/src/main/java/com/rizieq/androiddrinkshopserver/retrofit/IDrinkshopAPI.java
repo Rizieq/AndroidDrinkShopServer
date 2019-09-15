@@ -94,4 +94,10 @@ public interface IDrinkshopAPI {
     Call<String> updateToken(@Field("phone") String phone,
                              @Field("token") String token,
                              @Field("isServerToken") String isServerApp);
+
+    @FormUrlEncoded
+    @POST("server/order/update_order_status.php")
+    Observable<String> updateOrderStatus(@Field("phone") String phone,
+                             @Field("order_id") long order_id,
+                             @Field("status") int status);
 }
