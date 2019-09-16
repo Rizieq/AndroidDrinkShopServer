@@ -13,6 +13,7 @@ import com.rizieq.androiddrinkshopserver.model.Order;
 import com.rizieq.androiddrinkshopserver.retrofit.IDrinkshopAPI;
 import com.rizieq.androiddrinkshopserver.utils.Common;
 
+import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -92,6 +93,10 @@ public class ShowOrderActivity extends AppCompatActivity {
     }
 
     private void displayOrder(List<Order> orders) {
+
+        // TODO AKSI TERIMA NOTIFICATION
+        Collections.reverse(orders);
+
         OrderViewAdapter adapter = new OrderViewAdapter(this, orders);
         recycler_orders.setAdapter(adapter);
     }
