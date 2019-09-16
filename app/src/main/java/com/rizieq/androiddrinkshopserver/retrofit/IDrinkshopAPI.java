@@ -3,6 +3,7 @@ package com.rizieq.androiddrinkshopserver.retrofit;
 import com.rizieq.androiddrinkshopserver.model.Category;
 import com.rizieq.androiddrinkshopserver.model.Drink;
 import com.rizieq.androiddrinkshopserver.model.Order;
+import com.rizieq.androiddrinkshopserver.model.Token;
 
 import java.util.List;
 
@@ -98,6 +99,11 @@ public interface IDrinkshopAPI {
     @FormUrlEncoded
     @POST("server/order/update_order_status.php")
     Observable<String> updateOrderStatus(@Field("phone") String phone,
-                             @Field("order_id") long order_id,
-                             @Field("status") int status);
+                                         @Field("order_id") long order_id,
+                                         @Field("status") int status);
+
+    @FormUrlEncoded
+    @POST("gettoken.php")
+    Call<Token> getToken(@Field("phone") String phone,
+                         @Field("isServerToken") String isServerToken);
 }

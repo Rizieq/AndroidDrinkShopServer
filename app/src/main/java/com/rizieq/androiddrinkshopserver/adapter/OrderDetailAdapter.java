@@ -45,10 +45,17 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         orderDetailViewHolder.txt_sugar_ice.setText(new StringBuilder("Sugar :").append(itemList.get(i).getSugar())
         .append(", Ice: ").append(itemList.get(i).getIce()));
 
-        String topping_format = itemList.get(i).getToppingExtras().replaceAll("\\n",",");
-        topping_format = topping_format.substring(0,topping_format.length()-1);
+        if (itemList.get(i).getToppingExtras() != null &&
+            !itemList.get(i).getToppingExtras().isEmpty()) {
+            String topping_format = itemList.get(i).getToppingExtras().replaceAll("\\n", ",");
+            topping_format = topping_format.substring(0, topping_format.length() - 1);
 
-        orderDetailViewHolder.txt_topping.setText(topping_format);
+            orderDetailViewHolder.txt_topping.setText(topping_format);
+        }
+        else
+        {
+            orderDetailViewHolder.txt_topping.setText("None");
+        }
 
         Picasso.with(context).load(itemList.get(i).getLink()).into(orderDetailViewHolder.img_order_item);
 

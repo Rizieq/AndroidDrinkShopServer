@@ -59,11 +59,11 @@ public class Order {
         OrderAddress = orderAddress;
     }
 
-    public String getOrderPhone() {
+    public String getUserPhone() {
         return UserPhone;
     }
 
-    public void setOrderPhone(String userPhone) {
+    public void setUserPhone(String userPhone) {
         UserPhone = userPhone;
     }
 }
