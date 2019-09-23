@@ -83,7 +83,18 @@ public class ViewOrderDetail extends AppCompatActivity {
         .append(Common.currentOrder.getOrderId()));
         txt_order_price.setText(new StringBuilder("$").append(Common.currentOrder.getOrderPrice()));
         txt_order_address.setText(Common.currentOrder.getOrderAddress());
-        txt_order_comment.setText(Common.currentOrder.getOrderComment());
+
+        if (Common.currentOrder.getOrderComment() != null &&
+        !Common.currentOrder.getOrderComment().isEmpty()){
+
+            txt_order_comment.setText(new StringBuilder("Comment : ")
+            .append(Common.currentOrder.getOrderComment()));
+        }
+        else
+        {
+            txt_order_comment.setText(new StringBuilder("Comment : ")
+                    .append("None"));
+        }
 
 
         setSpinnerSelectedBaseOnOrder();

@@ -50,11 +50,13 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
             String topping_format = itemList.get(i).getToppingExtras().replaceAll("\\n", ",");
             topping_format = topping_format.substring(0, topping_format.length() - 1);
 
-            orderDetailViewHolder.txt_topping.setText(topping_format);
+            orderDetailViewHolder.txt_topping.setText(new StringBuilder("Topping : ")
+            .append(topping_format));
         }
         else
         {
-            orderDetailViewHolder.txt_topping.setText("None");
+            orderDetailViewHolder.txt_topping.setText(new StringBuilder("Topping : ")
+            .append("None"));
         }
 
         Picasso.with(context).load(itemList.get(i).getLink()).into(orderDetailViewHolder.img_order_item);

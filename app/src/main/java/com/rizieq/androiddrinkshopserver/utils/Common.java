@@ -22,7 +22,7 @@ public class Common {
     public static List<Category> menuList = new ArrayList<>();
 
 
-    public static final String BASE_URL = "http://192.168.1.3/drinkshop/";
+    public static final String BASE_URL = "http://192.168.1.9/drinkshop/";
     public static final String FCM_URL = "https://fcm.googleapis.com/";
 
     public static IDrinkshopAPI getAPI() {

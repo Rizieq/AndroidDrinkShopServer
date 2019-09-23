@@ -42,7 +42,18 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewHolder> {
         orderViewHolder.txt_order_id.setText(new StringBuilder("#").append(orderList.get(i).getOrderId())
                 .toString());
         orderViewHolder.txt_order_price.setText(new StringBuilder("$").append(orderList.get(i).getOrderPrice()));
-        orderViewHolder.txt_order_comment.setText(orderList.get(i).getOrderComment());
+
+        if (orderList.get(i).getOrderComment() != null &&
+        !orderList.get(i).getOrderComment().isEmpty()){
+
+            orderViewHolder.txt_order_comment.setText(new StringBuilder("Comment : ")
+            .append(orderList.get(i).getOrderComment()));
+        }
+        else
+        {
+            orderViewHolder.txt_order_comment.setText(new StringBuilder("Comment : ")
+                    .append("None"));
+        }
         orderViewHolder.txt_order_status.setText(new StringBuilder("Order Status : ").append(Common.convertCodeToStatus(orderList.get(i).getOrderStatus())));
 
         orderViewHolder.setItemClickListener(new IItemClickListener() {
